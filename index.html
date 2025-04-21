@@ -22,7 +22,33 @@
       color: #eee;
       line-height: 1.6;
     }
-    header, footer {
+    header {
+      background-color: #1f1f1f;
+      color: white;
+      text-align: center;
+      padding: 2rem 1rem;
+      position: relative;
+    }
+    .logo {
+      position: fixed;
+      left: 2rem;
+      top: 1rem;
+      cursor: pointer;
+      z-index: 1000;
+      opacity: 0.2;
+      filter: brightness(1);
+      transition: opacity 0.3s, filter 0.3s, transform 0.3s;
+    }
+    .logo:hover {
+      transform: scale(1.1);
+      opacity: 1 !important;
+      filter: brightness(1.5) !important;
+    }
+    .logo img {
+      height: 40px;
+      width: auto;
+    }
+    footer {
       background-color: #1f1f1f;
       color: white;
       text-align: center;
@@ -51,6 +77,7 @@
       max-width: 900px;
       margin: auto;
       padding: 2rem;
+      padding-top: 5rem;
     }
     section {
       margin-bottom: 3rem;
@@ -183,6 +210,13 @@
       color: #4CAF50;
     }
     @media (max-width: 768px) {
+      .logo {
+        left: 1rem;
+        top: 0.5rem;
+      }
+      .logo img {
+        height: 30px;
+      }
       nav a {
         display: block;
         margin: 0.5rem 0;
@@ -190,12 +224,19 @@
       section {
         padding: 1.5rem;
       }
+      main {
+        padding-top: 4rem;
+      }
     }
   </style>
 </head>
 <body>
 
 <header>
+  <!-- Добавленный логотип -->
+  <div class="logo" onclick="window.scrollTo({top: 0, behavior: 'smooth'});">
+    <img src="logo.png">
+  </div>
   <h1>Кибермошенничество: полное руководство по защите</h1>
   <p>Все, что вам нужно знать о современных цифровых угрозах</p>
 </header>
@@ -361,35 +402,35 @@
         <p>1. Что такое фишинг?</p>
         <label><input type="radio" name="q1" value="b"> Метод обмана для получения личных данных</label>
         <label><input type="radio" name="q1" value="a"> Способ ускорить интернет-соединение</label>
-	<label><input type="radio" name="q1" value="a"> Работа будущего</label>
+        <label><input type="radio" name="q1" value="a"> Работа будущего</label>
       </div>
 
       <div class="question">
         <p>2. Если вам позвонили из «банка» и просят код, что делать?</p>
         <label><input type="radio" name="q2" value="b"> Завершить разговор и перезвонить в банк по официальному номеру</label>
         <label><input type="radio" name="q2" value="a"> Немедленно сообщить все данные — вдруг это срочно</label>
-	<label><input type="radio" name="q2" value="a"> Сказать все что у тебя спросят</label>
+        <label><input type="radio" name="q2" value="a"> Сказать все что у тебя спросят</label>
       </div>
 
       <div class="question">
         <p>3. Как можно определить надёжность сайта?</p>
         <label><input type="radio" name="q3" value="b"> По наличию HTTPS и значка замка</label>
         <label><input type="radio" name="q3" value="a"> По привлекательному дизайну и красивым баннерам</label>
-	<label><input type="radio" name="q3" value="a"> По книге "Юный хакер"</label>
+        <label><input type="radio" name="q3" value="a"> По книге "Юный хакер"</label>
       </div>
 
       <div class="question">
         <p>4. Что делать, если получено подозрительное письмо с вложением?</p>
         <label><input type="radio" name="q4" value="b"> Не открывать и удалить, особенно если не ждёте письмо</label>
         <label><input type="radio" name="q4" value="a"> Открыть — вдруг это что-то важное</label>
-	<label><input type="radio" name="q4" value="a"> А что такое письмо?</label>
+        <label><input type="radio" name="q4" value="a"> А что такое письмо?</label>
       </div>
 
       <div class="question">
         <p>5. Какой пароль считается безопасным?</p>
         <label><input type="radio" name="q5" value="b"> Сложный, длинный и уникальный для каждого сайта</label>
         <label><input type="radio" name="q5" value="a"> Простое слово или дата рождения — легко запомнить</label>
-	<label><input type="radio" name="q5" value="a"> qwerty123</label>
+        <label><input type="radio" name="q5" value="a"> qwerty123</label>
       </div>
 
       <div class="question">
@@ -404,14 +445,14 @@
         <p>7. Что такое «вишинг»?</p>
         <label><input type="radio" name="q7" value="b"> Телефонный обман с целью выманивания личных данных</label>
         <label><input type="radio" name="q7" value="a"> Техника ускорения загрузки видео</label>
-	<label><input type="radio" name="q7" value="a"> Мечтания - раздумье о несуществующем</label>
+        <label><input type="radio" name="q7" value="a"> Мечтания - раздумье о несуществующем</label>
       </div>
 
       <div class="question">
         <p>8. Можно ли доверять Wi-Fi в общественных местах?</p>
         <label><input type="radio" name="q8" value="b"> Только при использовании VPN и без ввода личных данных</label>
         <label><input type="radio" name="q8" value="a"> Да, если сеть с высоким уровнем сигнала</label>
-	<label><input type="radio" name="q8" value="a"> Конечно, на халяву же)))</label>
+        <label><input type="radio" name="q8" value="a"> Конечно, на халяву же)))</label>
       </div>
 
       <button type="button" onclick="checkAnswers()">Проверить знания</button>
@@ -451,6 +492,23 @@
 </footer>
 
 <script>
+// Обработчик прокрутки страницы для изменения прозрачности логотипа
+window.addEventListener('scroll', function() {
+    const logo = document.querySelector('.logo');
+    const scrollPosition = window.scrollY;
+    const opacity = Math.min(0.2 + (scrollPosition / 300), 1);
+    
+    logo.style.opacity = opacity;
+    logo.style.filter = `brightness(${1 + opacity})`;
+});
+
+// Инициализация прозрачности логотипа при загрузке
+window.addEventListener('load', function() {
+    const logo = document.querySelector('.logo');
+    logo.style.transition = 'opacity 0.3s, filter 0.3s';
+    logo.style.opacity = '0.2';
+});
+
 function checkAnswers() {
   let score = 0;
   const totalQuestions = 8;
@@ -500,6 +558,14 @@ function checkAnswers() {
   
   // Прокручиваем к результату
   result.scrollIntoView({ behavior: 'smooth' });
+}
+
+// Функция для прокрутки в начало страницы
+function scrollToTop() {
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  });
 }
 </script>
 </body>
