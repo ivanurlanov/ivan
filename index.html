@@ -3,6 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <title>Кибермошенничество</title>
+  <!-- Добавлены фавиконы для всех устройств -->
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <link rel="manifest" href="site.webmanifest">
+  <link rel="mask-icon" href="safari-pinned-tab.svg" color="#00bfff">
+  <meta name="msapplication-TileColor" content="#2b5797">
+  <meta name="theme-color" content="#121212">
+  
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -126,7 +136,7 @@
         <label><input type="radio" name="q1" value="a"> Вирус</label>
       </div>
       <div class="question">
-        <p>2. Что делать при звонке от “службы безопасности”?</p>
+        <p>2. Что делать при звонке от "службы безопасности"?</p>
         <label><input type="radio" name="q2" value="b"> Прервать разговор и перезвонить в банк</label>
         <label><input type="radio" name="q2" value="a"> Назвать все коды из SMS</label>
       </div>
@@ -138,7 +148,7 @@
       <div class="question">
         <p>4. Какие действия помогут защититься?</p>
         <label><input type="checkbox" name="q4" value="1"> Использование антивируса</label>
-	<label><input type="checkbox" name="q4" value="1"> Двухфакторная аутентификация</label>
+        <label><input type="checkbox" name="q4" value="1"> Двухфакторная аутентификация</label>
         <label><input type="checkbox" name="q4" value="0"> Игнорирование обновлений</label>
       </div>
       <button type="button" onclick="checkAnswers()">Проверить</button>
@@ -164,7 +174,6 @@
 function checkAnswers() {
   let score = 0;
 
-  // Проверяем, что все обязательные вопросы отвечены
   const q1 = document.querySelector('input[name="q1"]:checked');
   const q2 = document.querySelector('input[name="q2"]:checked');
   const q3 = document.querySelector('input[name="q3"]:checked');
@@ -175,29 +184,24 @@ function checkAnswers() {
     return;
   }
 
-  // Проверяем ответы
   if (q1.value === "b") score++;
   if (q2.value === "b") score++;
   if (q3.value === "b") score++;
 
-  // Проверяем чекбоксы (должны быть отмечены только правильные варианты)
-  let q4Correct = true;
+  let allCorrect = true;
   q4.forEach(cb => {
-    if (cb.value !== "1") q4Correct = false;
+    if (cb.value !== "1") allCorrect = false;
   });
-  if (q4Correct && q4.length === 2) score++; // Должны быть отмечены 2 правильных варианта
-
-  // Выводим результат
+  if (allCorrect && q4.length === 2) {
+    score++;
+  }
   const result = document.getElementById("result");
   if (score === 4) {
-    result.textContent = "✅ Отлично! Вы хорошо разбираетесь в теме.";
-    result.style.color = "#4CAF50";
+    result.textContent = "Отлично! Вы хорошо разбираетесь в теме.";
   } else if (score >= 2) {
-    result.textContent = "🔸 Неплохо, но стоит ещё раз изучить способы защиты.";
-    result.style.color = "#FFC107";
+    result.textContent = "Неплохо, но стоит ещё раз изучить способы защиты.";
   } else {
-    result.textContent = "❌ Внимание! Вы рискуете стать жертвой мошенников.";
-    result.style.color = "#F44336";
+    result.textContent = "Внимание! Вы рискуете стать жертвой мошенников.";
   }
 }
 </script>
