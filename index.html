@@ -195,13 +195,16 @@ function checkAnswers() {
   if (allCorrect && q4.length === 2) {
     score++;
   }
-  const result = document.getElementById("result");
+    const result = document.getElementById("result");
   if (score === 4) {
-    result.textContent = "Отлично! Вы хорошо разбираетесь в теме.";
+    result.textContent = "✅ Отлично! Вы хорошо разбираетесь в теме.";
+    result.style.color = "#4CAF50";
   } else if (score >= 2) {
-    result.textContent = "Неплохо, но стоит ещё раз изучить способы защиты.";
+    result.textContent = "🔸 Неплохо, но стоит ещё раз изучить способы защиты.";
+    result.style.color = "#FFC107";
   } else {
-    result.textContent = "Внимание! Вы рискуете стать жертвой мошенников.";
+    result.textContent = "❌ Внимание! Вы рискуете стать жертвой мошенников.";
+    result.style.color = "#F44336";
   }
 }
 </script>
