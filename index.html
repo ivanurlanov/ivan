@@ -127,34 +127,63 @@
     </ul>
   </section>
 
-  <section id="quiz">
-    <h2>Мини-опрос</h2>
-    <form id="quizForm">
-      <div class="question">
-        <p>1. Что такое фишинг?</p>
-        <label><input type="radio" name="q1" value="b"> Поддельный сайт для кражи данных</label>
-        <label><input type="radio" name="q1" value="a"> Вирус</label>
-      </div>
-      <div class="question">
-        <p>2. Что делать при звонке от "службы безопасности"?</p>
-        <label><input type="radio" name="q2" value="b"> Прервать разговор и перезвонить в банк</label>
-        <label><input type="radio" name="q2" value="a"> Назвать все коды из SMS</label>
-      </div>
-      <div class="question">
-        <p>3. Как выглядит надёжный сайт?</p>
-        <label><input type="radio" name="q3" value="b"> Начинается с https и значок замка</label>
-        <label><input type="radio" name="q3" value="a"> Просто красивый дизайн</label>
-      </div>
-      <div class="question">
-        <p>4. Какие действия помогут защититься?</p>
-        <label><input type="checkbox" name="q4" value="1"> Использование антивируса</label>
-        <label><input type="checkbox" name="q4" value="1"> Двухфакторная аутентификация</label>
-        <label><input type="checkbox" name="q4" value="0"> Игнорирование обновлений</label>
-      </div>
-      <button type="button" onclick="checkAnswers()">Проверить</button>
-      <div id="result"></div>
-    </form>
-  </section>
+<section id="quiz">
+  <h2>Мини-опрос</h2>
+  <form id="quizForm">
+    <div class="question">
+      <p>1. Что такое фишинг?</p>
+      <label><input type="radio" name="q1" value="b"> Метод обмана для получения личных данных</label>
+      <label><input type="radio" name="q1" value="a"> Способ ускорить интернет-соединение</label>
+    </div>
+
+    <div class="question">
+      <p>2. Если вам позвонили из «банка» и просят код, что делать?</p>
+      <label><input type="radio" name="q2" value="b"> Завершить разговор и перезвонить в банк по официальному номеру</label>
+      <label><input type="radio" name="q2" value="a"> Немедленно сообщить все данные — вдруг это срочно</label>
+    </div>
+
+    <div class="question">
+      <p>3. Как можно определить надёжность сайта?</p>
+      <label><input type="radio" name="q3" value="b"> По наличию HTTPS и значка замка</label>
+      <label><input type="radio" name="q3" value="a"> По привлекательному дизайну и красивым баннерам</label>
+    </div>
+
+    <div class="question">
+      <p>4. Что делать, если получено подозрительное письмо с вложением?</p>
+      <label><input type="radio" name="q4" value="b"> Не открывать и удалить, особенно если не ждёте письмо</label>
+      <label><input type="radio" name="q4" value="a"> Открыть — вдруг это что-то важное</label>
+    </div>
+
+    <div class="question">
+      <p>5. Какой пароль считается безопасным?</p>
+      <label><input type="radio" name="q5" value="b"> Сложный, длинный и уникальный для каждого сайта</label>
+      <label><input type="radio" name="q5" value="a"> Простое слово или дата рождения — легко запомнить</label>
+    </div>
+
+    <div class="question">
+      <p>6. Какие действия помогут защититься? (выберите все подходящие)</p>
+      <label><input type="checkbox" name="q6" value="1"> Использование антивируса</label>
+      <label><input type="checkbox" name="q6" value="1"> Включение двухфакторной аутентификации</label>
+      <label><input type="checkbox" name="q6" value="0"> Использование одного пароля для всех аккаунтов</label>
+      <label><input type="checkbox" name="q6" value="1"> Регулярное обновление программ и ОС</label>
+    </div>
+
+    <div class="question">
+      <p>7. Что такое «вишинг»?</p>
+      <label><input type="radio" name="q7" value="b"> Телефонный обман с целью выманивания личных данных</label>
+      <label><input type="radio" name="q7" value="a"> Техника ускорения загрузки видео</label>
+    </div>
+
+    <div class="question">
+      <p>8. Можно ли доверять Wi-Fi в общественных местах?</p>
+      <label><input type="radio" name="q8" value="b"> Только при использовании VPN и без ввода личных данных</label>
+      <label><input type="radio" name="q8" value="a"> Да, если сеть с высоким уровнем сигнала</label>
+    </div>
+
+    <button type="button" onclick="checkAnswers()">Проверить</button>
+    <div id="result"></div>
+  </form>
+</section>
 
   <section id="contacts">
     <h2>Контакты и помощь</h2>
