@@ -202,41 +202,51 @@
 <script>
 function checkAnswers() {
   let score = 0;
-
-  const q1 = document.querySelector('input[name="q1"]:checked');
-  const q2 = document.querySelector('input[name="q2"]:checked');
-  const q3 = document.querySelector('input[name="q3"]:checked');
-  const q4 = document.querySelectorAll('input[name="q4"]:checked');
-
-  if (!q1 || !q2 || !q3 || q4.length === 0) {
-    alert("Пожалуйста, ответьте на все вопросы.");
-    return;
+  const totalQuestions = 8;
+  
+  // Проверяем, что все вопросы отвечены
+  for (let i = 1; i <= totalQuestions; i++) {
+    if (i !== 6 && !document.querySelector(`input[name="q${i}"]:checked`)) {
+      alert("Пожалуйста, ответьте на все вопросы.");
+      return;
+    }
   }
 
-  if (q1.value === "b") score++;
-  if (q2.value === "b") score++;
-  if (q3.value === "b") score++;
+  // Проверяем ответы на вопросы 1-5, 7-8 (radio)
+  if (document.querySelector('input[name="q1"]:checked').value === "b") score++;
+  if (document.querySelector('input[name="q2"]:checked').value === "b") score++;
+  if (document.querySelector('input[name="q3"]:checked').value === "b") score++;
+  if (document.querySelector('input[name="q4"]:checked').value === "b") score++;
+  if (document.querySelector('input[name="q5"]:checked').value === "b") score++;
+  if (document.querySelector('input[name="q7"]:checked').value === "b") score++;
+  if (document.querySelector('input[name="q8"]:checked').value === "b") score++;
 
-  let allCorrect = true;
-  q4.forEach(cb => {
-    if (cb.value !== "1") allCorrect = false;
+  // Проверяем вопрос 6 (checkbox)
+  const q6 = document.querySelectorAll('input[name="q6"]:checked');
+  let q6Correct = true;
+  q6.forEach(cb => {
+    if (cb.value !== "1") q6Correct = false;
   });
-  if (allCorrect && q4.length === 2) {
-    score++;
-  }
-    const result = document.getElementById("result");
-  if (score === 4) {
-    result.textContent = "✅ Отлично! Вы хорошо разбираетесь в теме.";
+  if (q6Correct && q6.length === 3) score++;
+
+  // Выводим результат
+  const result = document.getElementById("result");
+  const percentage = Math.round((score / totalQuestions) * 100);
+  
+  if (percentage >= 90) {
+    result.innerHTML = `✅ Отлично! ${percentage}% правильных ответов! Вы эксперт в кибербезопасности!`;
     result.style.color = "#4CAF50";
-  } else if (score >= 2) {
-    result.textContent = "🔸 Неплохо, но стоит ещё раз изучить способы защиты.";
+  } else if (percentage >= 50) {
+    result.innerHTML = `🔸 Хорошо! ${percentage}% правильных ответов. Есть куда расти!`;
     result.style.color = "#FFC107";
   } else {
-    result.textContent = "❌ Внимание! Вы рискуете стать жертвой мошенников.";
+    result.innerHTML = `❌ Внимание! Только ${percentage}% правильных ответов. Рекомендуем изучить материалы!`;
     result.style.color = "#F44336";
   }
+  
+  // Прокручиваем к результату
+  result.scrollIntoView({ behavior: 'smooth' });
 }
 </script>
-
 </body>
 </html>
